@@ -1,0 +1,118 @@
+<html>
+
+
+<head>
+
+    <title> MY Registration </title>
+
+    <style>
+
+      body {
+
+        background-color: darkgray;
+       
+      }
+
+      #mainscreen
+      {
+       margin: 2px;
+       border: 5px, rebeccapurple, dotted;
+       height: 98%;
+       width: 98%;
+       background-color: aquamarine;
+      }
+
+
+      #header
+      {
+       margin: 2px;
+       border: 5px, rebeccapurple, double;
+       height: 20%;
+       width: 100%;
+       background-color:crimson ;
+      }
+
+      
+      
+
+      #main
+      {
+       margin: 2px; 
+       height: 70%;
+       width: 100%;
+       background-color:rgb(192, 125, 138) ;
+       text-align: center;
+
+       
+      }
+
+      #footer
+      {
+       margin-bottom: 20px;  
+       height: 10%;
+       width: 100%;
+       background-color:darkkhaki;
+      };
+
+      table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+        table {
+
+        background-color:blueviolet;
+        margin-left: 600px;
+       
+ 
+}
+
+
+    </style>
+
+    <script>
+
+       function submit()
+       {
+var a=10;
+       var a= document.getElementById("no1").value;
+       var b= document.getElementById("no2").value;
+
+       if(a==b)
+       {
+ alert('same');
+       }
+       else
+       {
+        alert('not same');
+       }
+       }
+
+       /**alert('suchil');
+       confirm('Suchil');
+       prompt('suchil');  **/
+
+
+       
+    
+
+       
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+<input type="text" id="no1" >    
+  <input type="text" id="no2">   
+
+    <input type="button" value="Add" onclick="submit();">
+  
+
+</body>
+
+</html>

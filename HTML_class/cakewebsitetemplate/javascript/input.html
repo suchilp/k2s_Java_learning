@@ -1,0 +1,228 @@
+<html>
+<body>
+
+    <h1> INPUT TYPE="text"</h1>
+
+<input type="text"  name="pina" required>
+
+<h1> INPUT TYPE="button"</h1>
+
+<input class="favorite styled"       type="button"       value="Add to favorites">
+
+
+<h1> INPUT TYPE="checkbox"</h1>
+<fieldset>
+    <legend>Choose your monster's features:</legend>
+
+    <div>
+      <input type="checkbox" id="scales" name="scales" checked>
+      <label for="scales">Scales</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="horns" name="horns">
+      <label for="horns">Horns</label>
+    </div>
+</fieldset>
+
+<h1> INPUT TYPE="color"</h1>
+
+<p>Choose your monster's colors:</p>
+
+<div>
+    <input type="color" id="head" name="head"
+           value="#e66465">
+    <label for="head">Head</label>
+</div>
+
+<div>
+    <input type="color" id="body" name="body"
+            value="#f6b73c">
+    <label for="body">Body</label>
+</div>
+<h1> INPUT TYPE="date"</h1>
+
+<input type="date" value="2017-06-01" />
+
+<h1> INPUT TYPE="datetime-local"</h1>
+
+<label for="meeting-time">Choose a time for your appointment:</label>
+
+<input type="datetime-local" id="meeting-time"
+       name="meeting-time" value="2018-06-12T19:30"
+       min="2018-06-07T00:00" max="2018-06-14T00:00">
+
+
+       <h1> INPUT TYPE="email"</h1>
+
+       <label for="email">Enter your globex.com email:</label>
+
+       <input type="email" id="email"
+              pattern=".+@globex\.com" size="30" required>
+
+
+              <h1> INPUT TYPE="file"</h1>
+
+              <label for="avatar">Choose a profile picture:</label>
+
+<input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
+
+       <h1> INPUT TYPE="hidden"</h1>
+
+       <form>
+        <div>
+          <label for="title">Post title:</label>
+          <input type="text" id="title" name="title" value="My excellent blog post" />
+        </div>
+        <div>
+          <label for="content">Post content:</label>
+          <textarea id="content" name="content" cols="60" rows="5">
+      This is the content of my excellent blog post. I hope you enjoy it!
+          </textarea>
+        </div>
+        <div>
+          <button type="submit">Update post</button>
+        </div>
+        <input type="hidden" id="postId" name="postId" value="34657" />
+      </form>
+
+
+
+      <h1> INPUT TYPE="image"</h1>
+
+      <p>Sign in to your account:</p>
+
+<div>
+  <label for="userId">User ID</label>
+  <input type="text" id="userId" name="userId">
+</div>
+
+<input type="image" id="image" alt="Login"
+       src="/media/examples/login-button.png">
+
+
+       <h1> INPUT TYPE="month"</h1>
+
+       <label for="start">Start month:</label>
+
+       <input type="month" id="start" name="start"
+              min="2018-03" value="2018-05">
+
+              <h1> INPUT TYPE="number"</h1>
+
+              <label for="tentacles">Number of tentacles (10-100):</label>
+
+<input type="number" id="tentacles" name="tentacles"
+       min="10" max="100">
+
+
+       <h1> INPUT TYPE="password"</h1>
+
+       <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+    </div>
+    
+    <div>
+        <label for="pass">Password (8 characters minimum):</label>
+        <input type="password" id="pass" name="password"
+               minlength="8" required>
+    </div>
+    
+    <input type="submit" value="Sign in">
+    <h1> INPUT TYPE="radio"</h1>
+
+    <fieldset>
+        <legend>Select a maintenance drone:</legend>
+    
+        <div>
+          <input type="radio" id="huey" name="drone" value="huey"
+                 checked>
+          <label for="huey">Huey</label>
+        </div>
+    
+        <div>
+          <input type="radio" id="dewey" name="drone" value="dewey">
+          <label for="dewey">Dewey</label>
+        </div>
+    
+        <div>
+          <input type="radio" id="louie" name="drone" value="louie">
+          <label for="louie">Louie</label>
+        </div>
+    </fieldset>
+    
+    <h1> INPUT TYPE="range"</h1>
+    <p>Audio settings:</p>
+
+    <div>
+      <input type="range" id="volume" name="volume"
+             min="0" max="11">
+      <label for="volume">Volume</label>
+    </div>
+    
+    <div>
+      <input type="range" id="cowbell" name="cowbell" 
+             min="0" max="100" value="90" step="10">
+      <label for="cowbell">Cowbell</label>
+    </div>
+    
+    <h1> INPUT TYPE="reset"</h1>
+    <form>
+        <div class="controls">
+    
+            <label for="id">User ID:</label>
+            <input type="text" id="id" name="id">
+    
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+    
+        </div>
+    </form>
+    <h1> INPUT TYPE="search"</h1>
+    <label for="site-search">Search the site:</label>
+    <input type="search" id="site-search" name="q">
+    
+    <button>Search</button>
+    <h1> INPUT TYPE="submit"</h1>
+    <input type="submit" value="Send Request" />
+
+    <h1> INPUT TYPE="tel"</h1>
+
+    <label for="phone">Enter your phone number:</label>
+
+<input type="tel" id="phone" name="phone"
+       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+       required>
+
+<small>Format: 123-456-7890</small>
+
+<h1> INPUT TYPE="time"</h1>
+
+<label for="appt">Choose a time for your meeting:</label>
+
+<input type="time" id="appt" name="appt"
+       min="09:00" max="18:00" required>
+
+<small>Office hours are 9am to 6pm</small>
+
+<h1> INPUT TYPE="url"</h1>
+
+<label for="url">Enter an https:// URL:</label>
+
+<input type="url" name="url" id="url"
+       placeholder="https://example.com"
+       pattern="https://.*" size="30"
+       required>
+       <h1> INPUT TYPE="week"</h1>
+
+       <label for="week">Choose a week in May or June:</label>
+
+<input type="week" name="week" id="camp-week"
+       min="2018-W18" max="2018-W26" required>
+
+
+</body>
+</html>
