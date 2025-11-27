@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/HTML_class/Homestate Free Website Template - Free-CSS.com/homestate" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/python" vcs="Git" />
   </component>
 </project>
