@@ -1,0 +1,68 @@
+
+<html>
+    <script src="C:/Users/pradh/OneDrive/Desktop/HTML_class/cakewebsitetemplate/javascript/first.js"></script>
+
+<script>
+
+let myNumber = 5;
+
+// Defining a function without parameter types or return type
+function addNumbers(x, y) {
+  return x + y;
+}
+
+// Defining a class with properties and a method
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getDetails() {
+    return `Name: ${this.name}, Age: ${this.age}`;
+  }
+}
+
+// Using the variables, function, and class
+console.log(myNumber);
+console.log(addNumbers(30, 4));
+const person = new Person("Samaira", 3);
+console.log(person.getDetails());
+
+//----------------------------------------------------------------------------------------------------------------
+// Defining a variable with type annotation
+let myNumber: number = 5;
+
+// Defining a function with parameters and return type
+function addNumbers(x: number, y: number): number {
+  return x + y;
+}
+
+// Defining a class with properties and a method
+class Person {
+  private name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public getDetails(): string {
+    return `Name: ${this.name}, Age: ${this.age}`;
+  }
+}
+
+// Using the variables, function, and class
+console.log(myNumber);
+console.log(addNumbers(3, 4));
+const person = new Person("Alice", 25);
+console.log(person.getDetails());
+
+</script>
+
+
+
+<body></body>
+
+</html>

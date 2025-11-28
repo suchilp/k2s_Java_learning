@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document Object Example</title>
+</head>
+<body>
+	<h1 id="myHeading">Hello World!</h1>
+    Enter the Value between 1 to 10<input type="text" id="numValue">
+
+	<button onclick="validateNumber()">Change Text</button>
+
+<script>
+
+
+function validateNumber() {
+    var number=document.getElementById('numValue').value;
+  if (number >= 1 && number <= 10) {
+    alert('correct number');
+  } else {
+    alert('Please enter correct number');
+  }
+
+}
+
+		function changeText() {
+			var myNumber = 42;
+var myString = "Hello, world!";
+var myBoolean = true;
+var myNull = null;
+var myUndefined = undefined;
+var myObject = {name: "Alice", age: 30};
+var mySymbol = Symbol("foo");
+
+console.log('suchil kumar pradhan');
+alert('suchil');
+
+console.log(typeof myNumber); // Output: "number"
+console.log(typeof myString); // Output: "string"
+console.log(typeof myBoolean); // Output: "boolean"
+console.log(typeof myNull); // Output: "object"
+console.log(typeof myUndefined); // Output: "undefined"
+console.log(typeof myObject); // Output: "object"
+console.log(typeof mySymbol); // Output: "symbol"
+		}
+	</script>
+</body>
+</html>
