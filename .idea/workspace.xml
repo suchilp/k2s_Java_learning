@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67af2cbc-cb92-4a04-bf50-7a0cdc7b579d" name="Changes" comment="extra">
-      <change afterPath="$PROJECT_DIR$/python/swati.ipynb" afterDir="false" />
+    <list default="true" id="67af2cbc-cb92-4a04-bf50-7a0cdc7b579d" name="Changes" comment="python">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_26_2025_11_32_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML_class/Homestate Free Website Template - Free-CSS.com/homestate" beforeDir="false" afterPath="$PROJECT_DIR$/HTML_class/Homestate Free Website Template - Free-CSS.com/homestate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/k2s/k2s_Java_learning",
+    "last_opened_file_path": "C:/k2s/k2s_Java_learning/java",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1764218949818</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="python">
+      <created>1765077162552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765077162552</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -108,6 +116,7 @@
     <MESSAGE value="added the pyhon" />
     <MESSAGE value="added the pyhon code" />
     <MESSAGE value="extra" />
-    <option name="LAST_COMMIT_MESSAGE" value="extra" />
+    <MESSAGE value="python" />
+    <option name="LAST_COMMIT_MESSAGE" value="python" />
   </component>
 </project>
