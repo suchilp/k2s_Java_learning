@@ -10,20 +10,15 @@ public class AdjacencyMatrixDynamic {
                 {1, 2}, {1, 4},
                 {2, 3}, {2, 4},
                 {3, 4},
-                {4, 3},{4,1},{4,2}
+                {4, 3}, {4, 1}, {4, 2}
         };
-
         for (int[] e : edges) {
             addEdge(graph, e[0], e[1]);
         }
-
         // print matrix
-
-        for(int i=0;i<V;i++)
-        {
-            for(int j=0;j<V;j++)
-            {
-                System.out.print(graph[i][j] +" ");
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                System.out.print(graph[i][j] + " ");
             }
             System.out.println("");
         }
