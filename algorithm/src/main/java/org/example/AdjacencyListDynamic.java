@@ -6,12 +6,14 @@ import java.util.List;
 public class AdjacencyListDynamic {
     int V = 5;
     private List<List<Integer>> adjList;
+
     AdjacencyListDynamic() {
         adjList = new ArrayList<>();
         for (int i = 0; i < V; i++) {
             adjList.add(new ArrayList<>());
         }
     }
+
     public static void main(String[] args) {
         AdjacencyListDynamic obj = new AdjacencyListDynamic();
         int[][] edges = {
@@ -32,6 +34,7 @@ public class AdjacencyListDynamic {
             System.out.println(adjList.get(i));
         }
     }
+
     void addEdge(int src, int dest) {
         adjList.get(src).add(dest);
     }
