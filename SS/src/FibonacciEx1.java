@@ -1,7 +1,7 @@
 public class FibonacciEx1 {
     public static void main(String[]args){
         FibonacciEx1 f=new FibonacciEx1();
-        int out=f.fibonacci(10);
+        int out=f.fibonacci(16);
         System.out.println(out);
 
     }
@@ -9,6 +9,13 @@ public class FibonacciEx1 {
         if(n<=1){
             return n;
         }
-        return fibonacci(n-1)+fibonacci(n-2);
+        int a=0;
+        int b=1;
+        for(int i=2;i<=n;i++){
+          int c=a+b;
+          a=b;
+          b=c;
+        }
+        return b;
     }
 }
