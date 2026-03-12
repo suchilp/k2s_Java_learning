@@ -4,7 +4,7 @@ public class BSIterative {
     public static void main(String[] args) {
         int arr[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160};
         int out = binarySearchItt(20, arr);
-        System.out.println(out);
+        System.out.println("test"+out);
     }
     public static int binarySearchItt(int item, int arr[]) {
         int l = 0;
