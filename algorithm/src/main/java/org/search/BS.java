@@ -4,7 +4,7 @@ public class BS {
     public static void main(String[] args) {
         int arr[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160};
         int out = binarySearch(0, arr.length-1, 100, arr);
-        System.out.println(out);
+        System.out.println("swati"+out);
 
     }
     public static int binarySearch(int l, int h, int item, int arr[]) {

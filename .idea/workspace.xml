@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67af2cbc-cb92-4a04-bf50-7a0cdc7b579d" name="Changes" comment="python">
+      <change afterPath="$PROJECT_DIR$/algorithm/src/main/java/org/search/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML_class/Homestate Free Website Template - Free-CSS.com/homestate" beforeDir="false" afterPath="$PROJECT_DIR$/HTML_class/Homestate Free Website Template - Free-CSS.com/homestate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/07192025.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python/07192025.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Basic.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python/Basic.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/List.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python/List.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/list7.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python/list7.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/swati.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python/swati.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hibernate1/target/classes/org/swati/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Hibernate1/target/classes/org/swati/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithm/src/main/java/org/search/BS.java" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/src/main/java/org/search/BS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/02-Python-for-Data-Analysis-NumPy/01-NumPy Arrays.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/02-Python-for-Data-Analysis-NumPy/01-NumPy Arrays.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/02-Python-for-Data-Analysis-NumPy/04-Numpy Exercises.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/02-Python-for-Data-Analysis-NumPy/04-Numpy Exercises.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/03-Python-for-Data-Analysis-Pandas/02-Series.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/03-Python-for-Data-Analysis-Pandas/02-Series.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/03-Python-for-Data-Analysis-Pandas/03-DataFrames.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/03-Python-for-Data-Analysis-Pandas/03-DataFrames.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/01-Matplotlib Concepts Lecture.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/01-Matplotlib Concepts Lecture.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/02-Matplotlib Exercises.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/02-Matplotlib Exercises.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/03-Matplotlib Exercises - Solutions.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/python-for-data-science-and-machine-learning-bootcamp/Py_DS_ML_Bootcamp-master/Refactored_Py_DS_ML_Bootcamp-master/05-Data-Visualization-with-Matplotlib/03-Matplotlib Exercises - Solutions.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "shashwatee2000"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/suchilp/k2s_Java_learning.git",
+    "accountId": "a8ed87e3-ede9-4049-9583-5542eaa50041"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -35,31 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/k2s/k2s_Java_learning&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "ss",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/k2s/k2s_Java_learning",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;module&quot;,
-      &quot;directory&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module",
+      "directory",
+      "repository"
     ]
   }
-}</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
-      </set>
-    </attachedChunks>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
