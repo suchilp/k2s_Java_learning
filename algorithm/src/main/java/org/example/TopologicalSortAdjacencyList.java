@@ -7,6 +7,7 @@ public class TopologicalSortAdjacencyList {
     //Helper class for describe edges in the graph
     static class Edge {
         int from, to, weight;
+
         public Edge(int from, int to, int weight) {
             this.from = from;
             this.to = to;
@@ -32,7 +33,7 @@ public class TopologicalSortAdjacencyList {
         int lastOrderToFirst = numberOfNodes - 1;
         for (int i = 0; i < numberOfNodes; i++) {
             if (!visited[i]) {
-                lastOrderToFirst=  dfs(i, graph, numberOfNodes, visited, ordering, lastOrderToFirst);
+                lastOrderToFirst = dfs(i, graph, numberOfNodes, visited, ordering, lastOrderToFirst);
             }
         }
         return ordering;
@@ -67,6 +68,34 @@ public class TopologicalSortAdjacencyList {
 
     }
 
+    public static Integer[] directedAcyclicGraph(Map<Integer, List<Edge>> graph, int start, int noOfNodes) {
+        int[] topSort = topologicalSort(graph, noOfNodes);
+        Integer[] distance = new Integer[noOfNodes];
+        distance[start] = 0;
+
+        for (int i = 0; i < noOfNodes; i++) {
+            int nodeIndex = topSort[i];
+            if (Objects.nonNull(distance[nodeIndex])) {
+                List<Edge> adjacentList = graph.get(nodeIndex);
+                if (adjacentList != null) {
+                    for (Edge e : adjacentList) {
+                        int newDistance = e.weight + distance[nodeIndex];
+                        if (distance[e.to] == null) {
+                            distance[e.to] = newDistance;
+                        } else {
+                            distance[e.to] = Math.min(newDistance, distance[e.to]);
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        return distance;
+
+    }
+
 
     public static void main(String[] args) {
         //Graph Setup
@@ -92,5 +121,15 @@ public class TopologicalSortAdjacencyList {
         int[] orderingStack = topologicalSortStack(graph, N);
         System.out.println(Arrays.toString(orderingStack));
 
+        //find all the shortest path from starting node 0
+
+        Integer[] dists = directedAcyclicGraph(graph, 0, N);
+        System.out.println(Arrays.toString(dists));
+// Find the shortest path from 0 to 4 which is 8.0
+        System.out.println(dists[4]);
+
+        // Find the shortest path from 0 to 6 which
+        // is null since 6 is not reachable!
+        System.out.println(dists[6]);
     }
 }
