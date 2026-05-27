@@ -1,0 +1,29 @@
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.log
+target/
+
+# Maven
+**/target/
+.settings/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Node
+node_modules/
+build/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+
+# Docker
+docker-compose.override.yml
