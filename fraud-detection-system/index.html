@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection System - Documentation Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+
+        .tab-button:hover {
+            background: #e8e8e8;
+            color: #333;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .content {
+            padding: 40px;
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .subsection {
+            margin-bottom: 40px;
+        }
+
+        .subsection-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .service-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .service-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .endpoint {
+            background: #f0f4ff;
+            border: 1px solid #d0d8ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: white;
+        }
+
+        .method.post {
+            background: #4CAF50;
+        }
+
+        .method.get {
+            background: #2196F3;
+        }
+
+        .method.put {
+            background: #FF9800;
+        }
+
+        .method.delete {
+            background: #F44336;
+        }
+
+        .flow-diagram {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .architecture {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            border-bottom: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .status-badge.ready {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-badge.warning {
+            background: #FF9800;
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .config-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .port-badge {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .tab-button {
+                font-size: 0.9em;
+                padding: 12px 15px;
+            }
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏦 Online Banking Fraud Detection System</h1>
+            <p>Complete Documentation Portal</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab(event, 'overview')">Overview</button>
+            <button class="tab-button" onclick="showTab(event, 'architecture')">Architecture</button>
+            <button class="tab-button" onclick="showTab(event, 'services')">Services</button>
+            <button class="tab-button" onclick="showTab(event, 'api')">API Reference</button>
+            <button class="tab-button" onclick="showTab(event, 'flows')">Flows</button>
+            <button class="tab-button" onclick="showTab(event, 'database')">Database</button>
+            <button class="tab-button" onclick="showTab(event, 'security')">Security</button>
+            <button class="tab-button" onclick="showTab(event, 'deployment')">Deployment</button>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="content active">
+            <h2 class="section-title">📋 Project Overview</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Project Description</h3>
+                <p style="line-height: 1.8; color: #555;">
+                    A real-time online banking fraud detection system built with microservices architecture. 
+                    The system monitors transactions in real-time, applies rule-based and machine learning-based 
+                    fraud detection, and makes automatic decisions (approve/OTP/block) based on risk scores.
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Key Features</h3>
+                <ul class="feature-list">
+                    <li>Real-time transaction monitoring</li>
+                    <li>Rule-based fraud detection with configurable rules</li>
+                    <li>Machine learning integration (Isolation Forest)</li>
+                    <li>Risk-based authentication (OTP challenge)</li>
+                    <li>Comprehensive audit logging</li>
+                    <li>High availability with circuit breakers</li>
+                    <li>Event-driven architecture with Kafka</li>
+                    <li>JWT-based authentication</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Technology Stack</h3>
+                <div class="grid-2">
+                    <div class="service-box">
+                        <h4>Backend</h4>
+                        <p>Java 17+<br>Spring Boot 3.2<br>Spring Cloud Gateway<br>PostgreSQL</p>
+                    </div>
+                    <div class="service-box">
+                        <h4>Frontend</h4>
+                        <p>React 18<br>Material-UI<br>Redux Toolkit<br>Axios</p>
+                    </div>
+                    <div class="service-box">
+                        <h4>Infrastructure</h4>
+                        <p>Apache Kafka<br>Docker & Compose<br>PostgreSQL<br>Redis</p>
+                    </div>
+                    <div class="service-box">
+                        <h4>ML & Analytics</h4>
+                        <p>Python 3.11<br>FastAPI<br>Scikit-learn<br>Joblib</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">System Status</h3>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>Microservices</td>
+                        <td><span class="status-badge ready">READY</span></td>
+                        <td>7 services fully implemented</td>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td><span class="status-badge ready">READY</span></td>
+                        <td>React app with routing & auth</td>
+                    </tr>
+                    <tr>
+                        <td>ML Model</td>
+                        <td><span class="status-badge ready">READY</span></td>
+                        <td>Isolation Forest with FastAPI</td>
+                    </tr>
+                    <tr>
+                        <td>Database</td>
+                        <td><span class="status-badge ready">READY</span></td>
+                        <td>PostgreSQL with Flyway migrations</td>
+                    </tr>
+                    <tr>
+                        <td>Docker</td>
+                        <td><span class="status-badge ready">READY</span></td>
+                        <td>11 services in docker-compose</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ARCHITECTURE TAB -->
+        <div id="architecture" class="content">
+            <h2 class="section-title">🏗️ System Architecture</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">High-Level Architecture</h3>
+                <div class="flow-diagram">
+┌─────────────────────────────────────────────────────────┐
+│                    CLIENT TIER                          │
+│         React Frontend (Port 3000)                      │
+└──────────────────────┬──────────────────────────────────┘
+                       │ HTTPS
+┌──────────────────────┴──────────────────────────────────┐
+│                API GATEWAY (Port 8080)                  │
+│    ✓ Routing ✓ Circuit Breaker ✓ Auth                 │
+└─────┬────┬────┬────┬────┬────┬────────────────────────┘
+      │    │    │    │    │    │
+      ↓    ↓    ↓    ↓    ↓    ↓
+┌─────────────────────────────────────────────────────────┐
+│              MICROSERVICES TIER                         │
+│                                                         │
+│  Auth(8081) │ Tx(8082) │ Fraud(8083) │ User(8085)     │
+│  Notify(8084)│ Audit(8086)│ ML(Python)│                │
+└─────────────────────────────────────────────────────────┘
+      │           │              │
+      ↓           ↓              ↓
+┌─────────────────────────────────────────────────────────┐
+│            INFRASTRUCTURE TIER                          │
+│  PostgreSQL │ Kafka │ Redis │ Docker Network            │
+└─────────────────────────────────────────────────────────┘
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Microservices Layout</h3>
+                <table>
+                    <tr>
+                        <th>Service</th>
+                        <th>Port</th>
+                        <th>Purpose</th>
+                        <th>Technology</th>
+                    </tr>
+                    <tr>
+                        <td>API Gateway</td>
+                        <td><span class="port-badge">8080</span></td>
+                        <td>Request routing & circuit breaking</td>
+                        <td>Spring Cloud Gateway</td>
+                    </tr>
+                    <tr>
+                        <td>Auth Service</td>
+                        <td><span class="port-badge">8081</span></td>
+                        <td>JWT token & OTP verification</td>
+                        <td>Spring Boot + Security</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Service</td>
+                        <td><span class="port-badge">8082</span></td>
+                        <td>Transaction submission & Kafka publishing</td>
+                        <td>Spring Boot + Kafka</td>
+                    </tr>
+                    <tr>
+                        <td>Fraud Engine</td>
+                        <td><span class="port-badge">8083</span></td>
+                        <td>Risk scoring & fraud decision</td>
+                        <td>Spring Boot + Rules Engine</td>
+                    </tr>
+                    <tr>
+                        <td>User Service</td>
+                        <td><span class="port-badge">8085</span></td>
+                        <td>User profile & device management</td>
+                        <td>Spring Boot + JPA</td>
+                    </tr>
+                    <tr>
+                        <td>Notification Service</td>
+                        <td><span class="port-badge">8084</span></td>
+                        <td>Email, SMS, and OTP delivery</td>
+                        <td>Spring Boot + Kafka Consumer</td>
+                    </tr>
+                    <tr>
+                        <td>Audit Service</td>
+                        <td><span class="port-badge">8086</span></td>
+                        <td>Audit logging & queries</td>
+                        <td>Spring Boot + JPA</td>
+                    </tr>
+                    <tr>
+                        <td>ML Model Service</td>
+                        <td>5000</td>
+                        <td>Fraud prediction (ML)</td>
+                        <td>FastAPI + Scikit-learn</td>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td><span class="port-badge">3000</span></td>
+                        <td>Web user interface</td>
+                        <td>React + Redux</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SERVICES TAB -->
+        <div id="services" class="content">
+            <h2 class="section-title">🔧 Services Details</h2>
+
+            <div class="service-box">
+                <h3>🔐 Auth Service (Port 8081)</h3>
+                <p><strong>Features:</strong> JWT token generation, OTP verification, user registration</p>
+                <p><strong>Database:</strong> users, sessions</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>User registration with email</li>
+                    <li>JWT token generation & refresh</li>
+                    <li>OTP-based 2FA</li>
+                    <li>Session management</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>💳 Transaction Service (Port 8082)</h3>
+                <p><strong>Features:</strong> Transaction submission, validation, Kafka publishing</p>
+                <p><strong>Integration:</strong> Kafka producer (transaction-events topic)</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Receive transaction requests</li>
+                    <li>Validate amount & merchant</li>
+                    <li>Generate unique transaction IDs</li>
+                    <li>Publish to Kafka for fraud detection</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>🚨 Fraud Engine (Port 8083)</h3>
+                <p><strong>Features:</strong> Risk scoring, rule-based detection, ML integration</p>
+                <p><strong>Database:</strong> fraud_rules, fraud_alerts, fraud_patterns</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Rule-based risk scoring (0-100)</li>
+                    <li>ML model integration for predictions</li>
+                    <li>Decision making: APPROVED/OTP/BLOCKED</li>
+                    <li>Alert generation & publishing</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>👤 User Service (Port 8085)</h3>
+                <p><strong>Features:</strong> User profiles, device tracking, location-based detection</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>User profile management</li>
+                    <li>Device fingerprinting</li>
+                    <li>IP address & location tracking</li>
+                    <li>Behavior pattern analysis</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>📧 Notification Service (Port 8084)</h3>
+                <p><strong>Features:</strong> Email, SMS, OTP delivery</p>
+                <p><strong>Integration:</strong> Kafka consumer (notification-events topic)</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Email alerts</li>
+                    <li>SMS notifications</li>
+                    <li>OTP delivery</li>
+                    <li>Fraud alerts</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>📊 Audit Service (Port 8086)</h3>
+                <p><strong>Features:</strong> Comprehensive audit logging, queryable events</p>
+                <p><strong>Database:</strong> audit_logs (7 query endpoints)</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Log all system events</li>
+                    <li>Filter by event type</li>
+                    <li>Filter by user ID</li>
+                    <li>Filter by transaction ID</li>
+                    <li>Date range filtering</li>
+                    <li>Severity-based filtering</li>
+                </ul>
+            </div>
+
+            <div class="service-box">
+                <h3>🤖 ML Model Service (Python)</h3>
+                <p><strong>Features:</strong> Fraud prediction using Isolation Forest</p>
+                <p><strong>Model:</strong> Scikit-learn Isolation Forest</p>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Input: Transaction features</li>
+                    <li>Output: Fraud prediction (0/1)</li>
+                    <li>Model serialization with Joblib</li>
+                    <li>FastAPI endpoint</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- API REFERENCE TAB -->
+        <div id="api" class="content">
+            <h2 class="section-title">📡 API Reference</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Auth Service APIs</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/auth/register</strong>
+                    <p>Register new user with email</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/auth/login</strong>
+                    <p>User login - returns JWT token</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/auth/verify-otp</strong>
+                    <p>Verify OTP for 2FA</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/auth/refresh-token</strong>
+                    <p>Refresh JWT token</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Transaction Service APIs</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/transaction/transfer</strong>
+                    <p>Submit money transfer transaction</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Fraud Engine APIs</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/fraud/evaluate</strong>
+                    <p>Evaluate transaction risk score</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">User Service APIs</h3>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/user/profile</strong>
+                    <p>Get user profile</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/user/device/register</strong>
+                    <p>Register new device</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Notification Service APIs</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/notification/send</strong>
+                    <p>Send notification (email/SMS)</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Audit Service APIs</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/audit/log</strong>
+                    <p>Log audit event</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/audit/logs/event-type/{type}</strong>
+                    <p>Get logs by event type</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/audit/logs/user/{id}</strong>
+                    <p>Get logs by user ID</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/audit/logs/transaction/{id}</strong>
+                    <p>Get logs by transaction ID</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/audit/logs/date-range</strong>
+                    <p>Get logs by date range</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <strong>/audit/logs/severity/{level}</strong>
+                    <p>Get logs by severity level</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">ML Model API</h3>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <strong>/predict</strong>
+                    <p>Predict fraud using ML model</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOWS TAB -->
+        <div id="flows" class="content">
+            <h2 class="section-title">🔄 Transaction & Fraud Detection Flows</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">User Login Flow</h3>
+                <div class="flow-diagram">
+User
+  ↓
+Login Page (React)
+  ↓ Enter credentials
+API Gateway (8080)
+  ↓ Route: /auth/**
+Auth Service (8081)
+  ├─ Validate username/password
+  ├─ Hash & compare
+  └─ Generate JWT token
+  ↓ Return token
+Frontend
+  ├─ Save to localStorage
+  ├─ Set isAuthenticated = true
+  └─ Redirect to Dashboard
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Transaction & Fraud Detection Flow</h3>
+                <div class="flow-diagram">
+User submits transaction
+  ↓
+Frontend (DashboardPage)
+  ├─ Amount
+  ├─ Merchant
+  └─ Description
+  ↓ POST /transaction/transfer
+API Gateway (8080)
+  ├─ Validate token
+  ├─ Route to /transaction/**
+  └─ Check Circuit Breaker
+Transaction Service (8082)
+  ├─ Validate data
+  ├─ Generate transaction_id
+  ├─ Store in database
+  └─ Publish to Kafka: transaction-events
+  ↓
+Fraud Engine (8083) [Async Consumer]
+  ├─ Receive Kafka event
+  ├─ Calculate risk score:
+  │  ├─ Large amount? +40
+  │  ├─ New device? +30
+  │  └─ Foreign location? +50
+  │
+  ├─ Decision:
+  │  ├─ score ≤ 40  → APPROVED
+  │  ├─ score ≤ 70  → OTP_REQUIRED
+  │  └─ score > 70  → BLOCKED
+  │
+  └─ Publish: fraud-alerts
+  ↓ Branches
+  ├─→ APPROVED
+  │   └─→ Display: ✓ Transaction Approved
+  │
+  ├─→ OTP_REQUIRED
+  │   ├─→ Notification Service sends OTP
+  │   ├─→ User enters OTP in frontend
+  │   └─→ Auth Service verifies
+  │
+  └─→ BLOCKED
+      └─→ Display: ✗ Transaction Blocked
+  ↓
+Audit Service (8086)
+  ├─ Log: TRANSACTION_CREATED
+  ├─ Log: FRAUD_EVALUATED
+  └─ Log: FRAUD_BLOCKED/APPROVED
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Risk Scoring Algorithm</h3>
+                <div class="flow-diagram">
+score = 0
+
+Check 1: Amount
+├─ if (amount > $5000)
+│   score += 40
+└─ else
+    score += 0
+
+Check 2: Device
+├─ Query User Service
+├─ if (new_device_detected)
+│   score += 30
+└─ else
+    score += 0
+
+Check 3: Location
+├─ Get user_location
+├─ if (foreign_country)
+│   score += 50
+└─ else
+    score += 0
+
+Decision Matrix:
+├─ score: 0-40    → ✓ APPROVED
+├─ score: 41-70   → ⚠ OTP_VERIFICATION
+└─ score: 71-120  → ✗ BLOCKED
+                </div>
+            </div>
+        </div>
+
+        <!-- DATABASE TAB -->
+        <div id="database" class="content">
+            <h2 class="section-title">🗄️ Database Schema</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Auth Service Database</h3>
+                <div class="config-box">
+<strong>users table:</strong>
+- id (BIGSERIAL PK)
+- username (VARCHAR UNIQUE)
+- password (VARCHAR)
+- email (VARCHAR UNIQUE)
+- is_active (BOOLEAN)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+<strong>sessions table:</strong>
+- id (BIGSERIAL PK)
+- user_id (BIGINT FK)
+- token (VARCHAR UNIQUE)
+- expires_at (TIMESTAMP)
+- created_at (TIMESTAMP)
+
+Indexes: user_id, token, expires_at
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Fraud Engine Database</h3>
+                <div class="config-box">
+<strong>fraud_rules table:</strong>
+- id, rule_name, rule_type, threshold, is_active
+
+<strong>fraud_alerts table:</strong>
+- id, transaction_id, fraud_score, risk_level, status, created_at
+
+<strong>fraud_patterns table:</strong>
+- id, user_id, pattern_type, detected_value, detected_at
+
+Indexes: transaction_id, status, user_id, created_at DESC
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Audit Service Database</h3>
+                <div class="config-box">
+<strong>audit_logs table:</strong>
+- id (BIGSERIAL PK)
+- event_type (VARCHAR IDX)
+- description (VARCHAR)
+- user_id (VARCHAR IDX)
+- transaction_id (VARCHAR IDX)
+- request_id (VARCHAR IDX)
+- severity (VARCHAR IDX)
+- created_at (TIMESTAMP IDX DESC)
+
+Indexes: event_type, user_id, transaction_id, 
+         severity, created_at DESC
+
+Query Performance: All major queries use indexes
+                </div>
+            </div>
+        </div>
+
+        <!-- SECURITY TAB -->
+        <div id="security" class="content">
+            <h2 class="section-title">🔒 Security Architecture</h2>
+
+            <div class="highlight">
+                <strong>🔐 Authentication & Authorization</strong>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>JWT token-based authentication</li>
+                    <li>OTP for high-risk transactions (41-70 score)</li>
+                    <li>Token expiration: Configurable (default 1 hour)</li>
+                    <li>Refresh token mechanism</li>
+                    <li>Password hashing with BCrypt</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>🛡️ Circuit Breaker Pattern</strong>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Enabled on all 6 service routes</li>
+                    <li>Failure threshold: 50%</li>
+                    <li>Sliding window: 20 calls</li>
+                    <li>Open state timeout: 10 seconds</li>
+                    <li>Auto recovery mechanism</li>
+                    <li>Fallback response on failure</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>🔗 HTTPS & Transport Security</strong>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>Frontend ↔ API Gateway: HTTPS only</li>
+                    <li>Inter-service: Private Docker network</li>
+                    <li>Bearer token in Authorization header</li>
+                    <li>Rate limiting ready for deployment</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>📝 Audit & Compliance</strong>
+                <ul class="feature-list" style="margin-top: 10px;">
+                    <li>All actions logged with timestamps</li>
+                    <li>User ID tracking</li>
+                    <li>Transaction ID tracing</li>
+                    <li>Severity levels: INFO, WARNING, ERROR, CRITICAL</li>
+                    <li>Queryable audit trail</li>
+                    <li>Retention ready (can implement TTL)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DEPLOYMENT TAB -->
+        <div id="deployment" class="content">
+            <h2 class="section-title">🚀 Deployment & Setup</h2>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Local Development Setup</h3>
+                <div class="config-box">
+# 1. Check Java version
+java -version
+# Expected: Java 17+
+
+# 2. Check Maven version
+mvn -version
+# Expected: Maven 3.9+
+
+# 3. Build all services
+cd c:\k2s\k2s_Java_learning\fraud-detection-system
+mvn clean package -DskipTests
+
+# Expected: BUILD SUCCESS for all services
+
+# 4. Expected build time: 5-10 minutes (first run)
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Running Services Locally</h3>
+                <div class="highlight">
+                    <strong>⚠️ Open 8 Separate PowerShell Terminals</strong>
+                </div>
+                <div class="config-box">
+# Terminal 1: API Gateway (Port 8080)
+cd api-gateway
+java -jar target/api-gateway-0.0.1-SNAPSHOT.jar
+
+# Terminal 2: Auth Service (Port 8081)
+cd auth-service
+java -jar target/auth-service-0.0.1-SNAPSHOT.jar
+
+# Terminal 3: Transaction Service (Port 8082)
+cd transaction-service
+java -jar target/transaction-service-0.0.1-SNAPSHOT.jar
+
+# Terminal 4: Fraud Engine (Port 8083)
+cd fraud-engine
+java -jar target/fraud-engine-0.0.1-SNAPSHOT.jar
+
+# Terminal 5: Notification Service (Port 8084)
+cd notification-service
+java -jar target/notification-service-0.0.1-SNAPSHOT.jar
+
+# Terminal 6: User Service (Port 8085)
+cd user-service
+java -jar target/user-service-0.0.1-SNAPSHOT.jar
+
+# Terminal 7: Audit Service (Port 8086)
+cd audit-service
+java -jar target/audit-service-0.0.1-SNAPSHOT.jar
+
+# Terminal 8: Frontend
+cd frontend
+npm install
+npm start  # Opens localhost:3000
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Docker Deployment</h3>
+                <div class="config-box">
+# Build and run all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f auth-service
+
+# Scale a service
+docker-compose up -d --scale transaction-service=3
+
+# Stop all services
+docker-compose down
+
+# Remove volumes
+docker-compose down -v
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Services Summary</h3>
+                <table>
+                    <tr>
+                        <th>Service</th>
+                        <th>URL</th>
+                        <th>Status Check</th>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>http://localhost:3000</td>
+                        <td>Browser navigation</td>
+                    </tr>
+                    <tr>
+                        <td>API Gateway</td>
+                        <td>http://localhost:8080</td>
+                        <td>Routes requests to services</td>
+                    </tr>
+                    <tr>
+                        <td>Auth Service</td>
+                        <td>http://localhost:8081</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Service</td>
+                        <td>http://localhost:8082</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                    <tr>
+                        <td>Fraud Engine</td>
+                        <td>http://localhost:8083</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                    <tr>
+                        <td>Notification Service</td>
+                        <td>http://localhost:8084</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                    <tr>
+                        <td>User Service</td>
+                        <td>http://localhost:8085</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                    <tr>
+                        <td>Audit Service</td>
+                        <td>http://localhost:8086</td>
+                        <td>H2 Console: /h2-console</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="success">
+                <strong>✓ System Ready!</strong> All services can run locally with H2 in-memory database. 
+                No PostgreSQL installation required for development.
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Online Banking Fraud Detection System - Complete Documentation</p>
+            <p>Generated: May 30, 2026 | Version: 1.0</p>
+            <p>All services ready for deployment and testing</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(evt, tabName) {
+            // Hide all content
+            const contents = document.getElementsByClassName("content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            const buttons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            // Show the current tab and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Optional: Set first tab as active on page load
+        window.addEventListener('load', function() {
+            document.querySelector('.tab-button').click();
+        });
+    </script>
+</body>
+</html>
