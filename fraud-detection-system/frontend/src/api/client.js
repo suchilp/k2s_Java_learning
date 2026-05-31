@@ -1,11 +1,42 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8080';
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+
+// Create axios instance with default config
+const apiClient = axios.create({
+  baseURL: API_BASE,
+  timeout: 10000,
+});
+
+// Request interceptor - Add auth token
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response interceptor - Handle errors
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Auth API
 export const authAPI = {
   login: (username, password) =>
-    axios.post(`${API_BASE}/auth/login`, { username, password }),
+    apiClient.post('/auth/login', { username, password }),
   logout: () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -15,39 +46,27 @@ export const authAPI = {
 // Transaction API
 export const transactionAPI = {
   createTransaction: (transaction) =>
-    axios.post(`${API_BASE}/transaction/transfer`, transaction, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.post('/transaction/transfer', transaction),
   getTransactions: () =>
-    axios.get(`${API_BASE}/transaction/list`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.get('/transaction/list'),
 };
 
 // Fraud API
 export const fraudAPI = {
   evaluateFraud: (transactionData) =>
-    axios.post(`${API_BASE}/fraud/evaluate`, transactionData, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.post('/fraud/evaluate', transactionData),
   getAlerts: () =>
-    axios.get(`${API_BASE}/fraud/alerts`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.get('/fraud/alerts'),
 };
 
 // User API
 export const userAPI = {
   getProfile: () =>
-    axios.get(`${API_BASE}/user/profile`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.get('/user/profile'),
 };
 
 // Audit API
 export const auditAPI = {
   getLogs: () =>
-    axios.get(`${API_BASE}/audit/logs`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    }),
+    apiClient.get('/audit/logs'),
 };

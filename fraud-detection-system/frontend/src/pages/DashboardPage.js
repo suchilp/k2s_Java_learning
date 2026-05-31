@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Container,
   Box,
@@ -9,8 +10,17 @@ import {
   Alert,
   Grid,
   Paper,
+  CircularProgress,
+  Chip,
 } from '@mui/material';
 import { transactionAPI, fraudAPI } from '../api/client';
+
+const AMOUNT_VALIDATION = {
+  min: 0.01,
+  max: 1000000,
+};
+
+DashboardPage.propTypes = {};
 
 export const DashboardPage = () => {
   const [amount, setAmount] = useState('');
@@ -20,12 +30,48 @@ export const DashboardPage = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [fraudResult, setFraudResult] = useState(null);
+  const [validationErrors, setValidationErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!amount) {
+      newErrors.amount = 'Amount is required';
+    } else {
+      const amountNum = parseFloat(amount);
+      if (isNaN(amountNum)) {
+        newErrors.amount = 'Amount must be a valid number';
+      } else if (amountNum < AMOUNT_VALIDATION.min) {
+        newErrors.amount = `Minimum amount is $${AMOUNT_VALIDATION.min}`;
+      } else if (amountNum > AMOUNT_VALIDATION.max) {
+        newErrors.amount = `Maximum amount is $${AMOUNT_VALIDATION.max.toLocaleString()}`;
+      }
+    }
+
+    if (!merchant || merchant.trim().length === 0) {
+      newErrors.merchant = 'Merchant is required';
+    } else if (merchant.length > 100) {
+      newErrors.merchant = 'Merchant name cannot exceed 100 characters';
+    }
+
+    if (description && description.length > 500) {
+      newErrors.description = 'Description cannot exceed 500 characters';
+    }
+
+    setValidationErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmitTransaction = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
     setFraudResult(null);
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -33,8 +79,8 @@ export const DashboardPage = () => {
         userId: 'user-' + Date.now(),
         amount: parseFloat(amount),
         currency: 'USD',
-        merchant: merchant || 'Unknown',
-        description: description || 'Transfer',
+        merchant: merchant.trim(),
+        description: description.trim() || 'Transfer',
       };
 
       // Submit transaction
@@ -50,12 +96,14 @@ export const DashboardPage = () => {
       });
 
       setFraudResult(fraudResponse.data);
-      setSuccess('Transaction submitted and fraud evaluated!');
+      setSuccess('✅ Transaction submitted and fraud evaluated!');
       setAmount('');
       setMerchant('');
       setDescription('');
+      setValidationErrors({});
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to process transaction');
+      const errorMessage = err.response?.data?.message || err.message || 'Failed to process transaction';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -78,42 +126,72 @@ export const DashboardPage = () => {
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
             {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
 
-            <form onSubmit={handleSubmitTransaction}>
+            <form onSubmit={handleSubmitTransaction} noValidate>
               <TextField
                 fullWidth
-                label="Amount"
+                label="Amount (USD)"
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 margin="normal"
                 placeholder="1000.00"
-                inputProps={{ step: '0.01' }}
+                error={!!validationErrors.amount}
+                helperText={validationErrors.amount}
+                disabled={loading}
+                inputProps={{
+                  step: '0.01',
+                  min: '0.01',
+                  max: '1000000',
+                  'aria-label': 'Transaction amount',
+                }}
               />
               <TextField
                 fullWidth
-                label="Merchant"
+                label="Merchant *"
                 value={merchant}
                 onChange={(e) => setMerchant(e.target.value)}
                 margin="normal"
                 placeholder="Amazon, Walmart, etc."
+                error={!!validationErrors.merchant}
+                helperText={validationErrors.merchant}
+                disabled={loading}
+                inputProps={{
+                  'aria-label': 'Merchant name',
+                  maxLength: 100,
+                }}
               />
               <TextField
                 fullWidth
-                label="Description"
+                label="Description (Optional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 margin="normal"
-                placeholder="Optional description"
+                placeholder="Optional transaction description"
+                error={!!validationErrors.description}
+                helperText={validationErrors.description}
+                disabled={loading}
+                inputProps={{
+                  'aria-label': 'Transaction description',
+                  maxLength: 500,
+                }}
               />
               <Button
                 fullWidth
                 variant="contained"
                 color="primary"
                 type="submit"
-                sx={{ mt: 3 }}
-                disabled={loading || !amount}
+                sx={{ mt: 3, py: 1.5 }}
+                disabled={loading}
+                aria-busy={loading}
               >
-                {loading ? 'Processing...' : 'Submit Transaction'}
+                {loading ? (
+                  <>
+                    <CircularProgress size={20} sx={{ mr: 1 }} />
+                    Processing...
+                  </>
+                ) : (
+                  'Submit Transaction'
+                )}
               </Button>
             </form>
           </Card>
@@ -129,46 +207,51 @@ export const DashboardPage = () => {
             {!fraudResult ? (
               <Paper sx={{ p: 2, bgcolor: '#f5f5f5', textAlign: 'center' }}>
                 <Typography color="textSecondary">
-                  Submit a transaction to see fraud evaluation
+                  📊 Submit a transaction to see fraud evaluation
                 </Typography>
               </Paper>
             ) : (
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Paper sx={{ p: 2, bgcolor: '#e3f2fd' }}>
-                  <Typography variant="body2" color="textSecondary">
-                    Fraud Score
-                  </Typography>
-                  <Typography variant="h5" sx={{ color: '#1976d2' }}>
-                    {fraudResult.fraudScore || fraudResult.score || 'N/A'}%
-                  </Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box>
+                      <Typography variant="body2" color="textSecondary">
+                        Fraud Score
+                      </Typography>
+                      <Typography variant="h5" sx={{ color: '#1976d2', fontWeight: 'bold' }}>
+                        {fraudResult.fraudScore || fraudResult.score || 'N/A'}%
+                      </Typography>
+                    </Box>
+                  </Box>
                 </Paper>
 
                 <Paper sx={{ p: 2, bgcolor: '#fce4ec' }}>
-                  <Typography variant="body2" color="textSecondary">
-                    Risk Level
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color:
-                        fraudResult.riskLevel === 'HIGH'
-                          ? '#d32f2f'
-                          : fraudResult.riskLevel === 'MEDIUM'
-                          ? '#f57c00'
-                          : '#388e3c',
-                    }}
-                  >
-                    {fraudResult.riskLevel || 'UNKNOWN'}
-                  </Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box>
+                      <Typography variant="body2" color="textSecondary">
+                        Risk Level
+                      </Typography>
+                      <Chip
+                        label={fraudResult.riskLevel || 'UNKNOWN'}
+                        color={fraudResult.riskLevel === 'HIGH' ? 'error' : fraudResult.riskLevel === 'MEDIUM' ? 'warning' : 'success'}
+                        variant="filled"
+                        sx={{ mt: 1 }}
+                      />
+                    </Box>
+                  </Box>
                 </Paper>
 
                 <Paper sx={{ p: 2, bgcolor: '#f3e5f5' }}>
                   <Typography variant="body2" color="textSecondary">
-                    Status
+                    Transaction Status
                   </Typography>
-                  <Typography variant="h6" sx={{ mt: 1 }}>
-                    {fraudResult.status || 'PENDING'}
-                  </Typography>
+                  <Chip
+                    label={fraudResult.status || 'PENDING'}
+                    sx={{
+                      mt: 1,
+                      backgroundColor: fraudResult.status === 'APPROVED' ? '#c8e6c9' : fraudResult.status === 'BLOCKED' ? '#ffcdd2' : '#fff9c4',
+                    }}
+                  />
                 </Paper>
 
                 {fraudResult.details && (
