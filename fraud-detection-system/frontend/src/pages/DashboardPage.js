@@ -20,8 +20,6 @@ const AMOUNT_VALIDATION = {
   max: 1000000,
 };
 
-DashboardPage.propTypes = {};
-
 export const DashboardPage = () => {
   const [amount, setAmount] = useState('');
   const [merchant, setMerchant] = useState('');
@@ -315,3 +313,5 @@ export const DashboardPage = () => {
     </Container>
   );
 };
+
+DashboardPage.propTypes = {};
