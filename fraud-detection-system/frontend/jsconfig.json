@@ -4,9 +4,15 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "moduleResolution": "node",
     "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "baseUrl": "src",
+    "strict": false,
+    "esModuleInterop": true,
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["./components/*"],
@@ -16,8 +22,5 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "ts": {
-    "checkJs": false
-  }
+  "exclude": ["node_modules", "dist"]
 }
