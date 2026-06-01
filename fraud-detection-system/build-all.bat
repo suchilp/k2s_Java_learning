@@ -11,8 +11,32 @@ echo.
 echo Building all services...
 echo.
 
-cd /d C:\k2s\k2s_Java_learning\fraud-detection-system
+echo Building Auth Service...
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system\auth-service
 mvn clean install -DskipTests -q
+if errorlevel 1 goto :error
+
+echo Building Transaction Service...
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system\transaction-service
+mvn clean install -DskipTests -q
+if errorlevel 1 goto :error
+
+echo Building Fraud Engine...
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system\fraud-engine
+mvn clean install -DskipTests -q
+if errorlevel 1 goto :error
+
+echo Building Notification Service...
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system\notification-service
+mvn clean install -DskipTests -q
+if errorlevel 1 goto :error
+
+echo Building User Service...
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system\user-service
+mvn clean install -DskipTests -q
+if errorlevel 1 goto :error
+
+cd /d C:\k2s\k2s_Java_learning\fraud-detection-system
 
 echo.
 echo ========================================
@@ -41,3 +65,15 @@ echo    cd C:\k2s\k2s_Java_learning\fraud-detection-system\frontend
 echo    npm start
 echo.
 pause
+goto :end
+
+:error
+echo.
+echo ========================================
+echo ERROR: Build failed!
+echo ========================================
+echo.
+pause
+goto :end
+
+:end
