@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+// API Configuration:
+// - For development: Auth Service directly on 8081
+// - For production: API Gateway on 8080 (requires gateway to be built)
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8081';
 
 // Create axios instance with default config
 const apiClient = axios.create({

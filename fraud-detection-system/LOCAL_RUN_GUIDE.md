@@ -2,17 +2,74 @@
 
 This guide explains how to run the entire Fraud Detection System locally without Docker.
 
+---
+
+## ⚡ Quick Start (Windows - Easiest)
+
+**Using batch files** (automatically sets JAVA_HOME):
+
+### Step 1: Build all services (first time only)
+```bash
+C:\k2s\k2s_Java_learning\fraud-detection-system\build-all.bat
+```
+
+### Step 2: Start services in separate Command Prompt windows
+
+Open **6 Command Prompt windows** and run:
+
+1. **Terminal 1** - Auth Service (8081):
+   ```bash
+   C:\k2s\k2s_Java_learning\fraud-detection-system\run-auth-service.bat
+   ```
+
+2. **Terminal 2** - Transaction Service (8082):
+   ```bash
+   C:\k2s\k2s_Java_learning\fraud-detection-system\run-transaction-service.bat
+   ```
+
+3. **Terminal 3** - Fraud Engine (8083):
+   ```bash
+   C:\k2s\k2s_Java_learning\fraud-detection-system\run-fraud-engine.bat
+   ```
+
+4. **Terminal 4** - Notification Service (8084):
+   ```bash
+   C:\k2s\k2s_Java_learning\fraud-detection-system\run-notification-service.bat
+   ```
+
+5. **Terminal 5** - User Service (8085):
+   ```bash
+   C:\k2s\k2s_Java_learning\fraud-detection-system\run-user-service.bat
+   ```
+
+6. **Terminal 6** - Frontend (3000):
+   ```bash
+   cd C:\k2s\k2s_Java_learning\fraud-detection-system\frontend
+   npm start
+   ```
+
+### Step 3: Access the application
+- **Frontend**: http://localhost:3000
+- **Login with**: `admin` / `admin123`
+
+---
+
+## Local Run Guide - Fraud Detection System
+
+This guide explains how to run the entire Fraud Detection System locally without Docker.
+
 ## Prerequisites
 
 ### Java & Maven
 - **Java 17+** (JDK)
 - **Maven 3.8+**
 
-Verify installation:
+**IMPORTANT**: Set `JAVA_HOME` environment variable:
 ```bash
-java -version
-mvn -version
+set JAVA_HOME=C:\Program Files\Java\jdk-17
 ```
+
+Or use the provided **batch files** (they set JAVA_HOME automatically).
 
 ### Node.js
 - **Node.js 16+** and **npm 8+**
@@ -129,12 +186,19 @@ ML Model will be available at: **http://localhost:5000**
 | Service | Port | Purpose |
 |---------|------|---------|
 | Frontend | 3000 | React UI |
-| API Gateway | 8080 | Main entry point for all APIs |
+| **API Gateway** | 8080 | ⚠️ *Has build issues - skipped for now* |
 | Auth Service | 8081 | User authentication & authorization |
 | Transaction Service | 8082 | Transaction management |
 | Fraud Engine | 8083 | Fraud detection & scoring |
 | Notification Service | 8084 | Email/SMS notifications |
+| User Service | 8085 | User management |
 | ML Model | 5000 | Machine learning predictions |
+
+**⚠️ Current Setup**: Frontend connects directly to Auth Service (8081) instead of API Gateway (8080) due to API Gateway build issues. In production, the API Gateway should be used.
+
+---
+
+## Quick Start - Using Batch Files (Recommended)
 
 ## Default Credentials
 
