@@ -4,6 +4,7 @@ const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   token: localStorage.getItem('token') || null,
   isAuthenticated: !!localStorage.getItem('token'),
+  isInitialized: true, // Set to true after first check
 };
 
 const authSlice = createSlice({
@@ -14,6 +15,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
+      state.isInitialized = true;
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       localStorage.setItem('token', action.payload.token);
     },
@@ -21,6 +23,7 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
+      state.isInitialized = true;
       localStorage.removeItem('user');
       localStorage.removeItem('token');
     },

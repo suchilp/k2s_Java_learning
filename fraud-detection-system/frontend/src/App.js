@@ -8,6 +8,7 @@ import {
   Button,
   Box,
   Container,
+  CircularProgress,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -18,6 +19,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isInitialized = useSelector((state) => state.auth.isInitialized);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
@@ -54,23 +56,29 @@ function App() {
 
           {/* Main Content */}
           <Box sx={{ flex: 1 }}>
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route
-                path="/dashboard"
-                element={<PrivateRoute element={<DashboardPage />} />}
-              />
-              <Route
-                path="/"
-                element={
-                  isAuthenticated ? (
-                    <Navigate to="/dashboard" replace />
-                  ) : (
-                    <Navigate to="/login" replace />
-                  )
-                }
-              />
-            </Routes>
+            {!isInitialized ? (
+              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route
+                  path="/dashboard"
+                  element={<PrivateRoute element={<DashboardPage />} />}
+                />
+                <Route
+                  path="/"
+                  element={
+                    isAuthenticated ? (
+                      <Navigate to="/dashboard" replace />
+                    ) : (
+                      <Navigate to="/login" replace />
+                    )
+                  }
+                />
+              </Routes>
+            )}
           </Box>
 
           {/* Footer */}
